@@ -47,8 +47,8 @@ struct VistaCarrusel: View {
         /*.border(.black)
         .cornerRadius(10)
         .padding()*/
+        }
     }
-}
 
 struct VistaCarrusel_Previews: PreviewProvider {
     static var previews: some View {
