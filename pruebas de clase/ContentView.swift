@@ -13,25 +13,28 @@ struct ContentView: View {
         VStack{
             
             if esVStack{
+                Text("CARRUSEL VERTICAL")
+                Button("Cambia a HStack"){
+                    esVStack.toggle()
+                }.buttonStyle(TresDButtonStyle())
                 ScrollView{
                 VStack{
-                    Text("VSTACK")
-                    Button("Cambia a HStack"){
-                        esVStack.toggle()
-                    }
+                    
                     LlamaCarrusel2()
                 }
                 }
                 
             }else{
+                Text("CARRUSEL HORIZONTAL")
+                Button("Cambia a VStack"){
+                    esVStack.toggle()
+                }.buttonStyle(TresDButtonStyle())
                 ScrollView(.horizontal){
                 HStack{
-                    Text("HSTACK")
-                    Button("Cambia a VStack"){
-                        esVStack.toggle()
-                    }
+                    
                     LlamaCarrusel2()
                 }
+                    Spacer()
                 }
             }
         }
@@ -50,10 +53,35 @@ struct LlamaCarrusel2 : View {
         //.frame(width: 300)
         VistaCarrusel(imagen: "alcala", animal: "Animal de madrid", descripcion: "El Gato madrileño", autor: "El Albertpo")
         //.frame(width: 300)
-    }.frame(width: 300)
+    }.frame(width: 380)
     }
 }
-                            
+
+struct TresDButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .foregroundColor(.white)
+            .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.blue)
+                        .shadow(color: .black, radius: configuration.isPressed ? 0 : 5, x: 0, y: configuration.isPressed ? 0 : 5)
+                        .opacity(configuration.isPressed ? 0.8 : 1)
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white.opacity(0.5))
+                        .padding(2)
+                        .blur(radius: 2)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.white.opacity(0.2), lineWidth: 2)
+                        )
+                }
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1)
+    }
+}
                             
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
