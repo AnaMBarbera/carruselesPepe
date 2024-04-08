@@ -11,7 +11,8 @@ struct ContentView: View {
     @State private var esVStack : Bool = true
     var body: some View {
         VStack{
-            
+            /*En SwiftUI, toggle() es un método que se utiliza para cambiar el estado de una variable booleana. Si el estado es true, toggle() lo cambiará a false, y si es false, lo cambiará a true. Entonces, esVStack.toggle() cambia el estado de esVStack cada vez que se active el botón "Cambia a HStack" para alternar entre dos modos o estados en la interfaz de usuario, como cambiar entre un diseño de vista vertical (VStack) y uno horizontal (HStack).*/
+             
             if esVStack{
                 Text("CARRUSEL VERTICAL")
                 Button("Cambia a HStack"){
